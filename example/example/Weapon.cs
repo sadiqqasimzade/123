@@ -42,23 +42,24 @@ namespace example
             {
                 while (bulletCount > 0)
                 {
-                    Console.Write("pew");
                     bulletCount--;
                     shotedbullets++;
+                    Console.Write(shotedbullets+")pew");
                 }
             }
             else
             {
                 while (bulletCount > 0)
                 {
-                    Console.WriteLine("pew");
                     bulletCount--;
                     shotedbullets++;
+                    Console.WriteLine(shotedbullets+")pew");
                 }
             }
-            /*if (auto == true)*/ shotedbullets *= (time / bulletCap);
-            //else  shotedbullets *= ((time / bulletCap) + cooldown);
-            Console.WriteLine($"\nno bullet left.\ntime:{Math.Round( shotedbullets,2)}sec");
+            //if (auto == true)
+            //    shotedbullets *= (time / bulletCap);
+            //else shotedbullets *= ((time / bulletCap) + cooldown);
+            Console.WriteLine($"\nno bullet left.\ntime:{Math.Round(shotedbullets * (time / bulletCap), 2)}sec");
         }
 
         public void GetRemainBulletCount()
