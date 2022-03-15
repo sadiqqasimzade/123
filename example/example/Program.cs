@@ -1,20 +1,23 @@
 ﻿using System;
-namespace example  
+namespace example
 {
     class Program
     {
         static void Main(string[] args)
         {
+
             Console.OutputEncoding = System.Text.Encoding.GetEncoding("UTF-16");
             int bulletcap = -1;
             int bulletcount = -1;
             double time = -1;
-            bool auto=true;
-            int choise=-1;
+            bool auto = true;
+            int choise = -1;
 
-            Input(ref bulletcap, ref bulletcount, ref time, ref choise, ref auto);
+
 
             Weapon gun = new Weapon(bulletcap, bulletcount, time, auto);
+
+
             while (choise != 6)
             {
                 Console.Write(@"
@@ -25,7 +28,11 @@ namespace example
 4 - Reload metodu üçün
 5 - ChangeFireMode metodu üçün
 6 - Proqramdan dayandirmaq üçün
-7 - Clear console
+7 - Redaktə et
+----
+FOR DEBUG
+8 - Clear Console
+9 - ShowInfo
 Choise:");
                 choise = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("---------------------------");
@@ -50,7 +57,14 @@ Choise:");
                         break;
                     case 6: break;
                     case 7:
+                        gun.Settings();
+                        break;
+
+                    case 8:
                         Console.Clear();
+                        break;
+                    case 9:
+                        gun.ShowInfo();
                         break;
                     default:
                         Console.WriteLine("Wrong input");
@@ -59,44 +73,5 @@ Choise:");
                 }
             }
         }
-
-        static void Input(ref int bulletcap,ref int bulletcount,ref double time,ref int choise,ref bool auto)
-        {
-            while (bulletcap <= 0)
-            {
-                Console.Write("bulletcap:");
-                bulletcap = Convert.ToInt16(Console.ReadLine());
-                if (bulletcap <= 0) Console.WriteLine("WRONG INPUT BULLETCAP CANT BE 0 OR NEGATIVE");
-            }
-            while (bulletcount < 0 || bulletcount > bulletcap)
-            {
-                Console.Write("bulletcount:");
-                bulletcount = Convert.ToInt16(Console.ReadLine());
-                if (bulletcount < 0 || bulletcount > bulletcap) Console.WriteLine("WRONG INPUT BULLETCOUNT CANT BE NEGATIVE OR GREATER THAN BULLETCAP");
-            }
-            while (time <= 0)
-            {
-                Console.Write("time:");
-                time = Convert.ToDouble(Console.ReadLine());
-                if (time <= 0) Console.WriteLine("WRONG INPUT TIME CANT BE NEGATIVE OR 0");
-            }
-            while (true)
-            {
-                Console.WriteLine("auto mode 1) TRUE 2)FALSE");
-                choise = Convert.ToInt32(Console.ReadLine());
-                if (choise == 1)
-                {
-                    auto = true;
-                    break;
-                }
-                else if (choise == 2)
-                {
-                    auto = false;
-                    break;
-                }
-                Console.WriteLine("WRONG INPUT");
-            }
-        }
-
     }
 }
