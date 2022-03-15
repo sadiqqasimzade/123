@@ -15,7 +15,6 @@ namespace example
             this.bulletCount = bulletCount;
             this.time = time;
             this.auto = auto;
-            InputChecker();
         }
 
 
@@ -24,30 +23,15 @@ namespace example
         {
             if (bulletCount == 0)
                 Console.WriteLine("no bullet left");
-            
-            else if (auto == true)
-            {
-                Console.WriteLine("pew");
-                bulletCount--;
-                if (bulletCount > 0)
-                {
-                    bulletCount--;
-                    Console.WriteLine("pew");
-                }
-                else
-                    Console.WriteLine("no bullet left");
-                
-            }
             else
             {
                 bulletCount--;
                 Console.WriteLine("pew");
             }
-
         }
         public void Fire()
         {
-            double cooldown = 1;//atislar arasinda fasile
+            //double cooldown = 1;//atislar arasinda fasile
             double shotedbullets = 0;
             if (bulletCount == 0)
             {
@@ -72,9 +56,9 @@ namespace example
                     shotedbullets++;
                 }
             }
-            if (auto == true) shotedbullets = ((time / bulletCap) * shotedbullets) + shotedbullets * cooldown;
-            else shotedbullets *= (time / bulletCap);
-            Console.WriteLine($"no bullet left.\ntime:{shotedbullets}sec");
+            /*if (auto == true)*/ shotedbullets *= (time / bulletCap);
+            //else  shotedbullets *= ((time / bulletCap) + cooldown);
+            Console.WriteLine($"\nno bullet left.\ntime:{Math.Round( shotedbullets,2)}sec");
         }
 
         public void GetRemainBulletCount()
@@ -93,39 +77,14 @@ namespace example
                 bulletCount = bulletCap;
             }
         }
-        public void Info()
-        {
-            Console.WriteLine(@$"       Info
-BulletCap:{bulletCap}
-BulletCount:{bulletCount}
-FireTime:{time}
-Auto fire mode:{auto}");
-        }
+       
 
         public void ChangeFireMode()
         {
             auto = !auto;
-            Console.WriteLine("Mode changed");
+            Console.WriteLine("Auto Mode changed to:"+auto);
         }
-        public void InputChecker()
-        {
-            if(bulletCap<=0)
-            {
-                bulletCap = 10;
-                Console.WriteLine("WARNING:BULLET CAPACITY CANT BE 0 OR NEGATIVE.USING DEFAULT PARAMS:bullet capacity=10");
-            }
-            if(bulletCount>bulletCap)
-            {
-                bulletCount = 0;
-                Console.WriteLine("WARNING:BULLET AMOUT CANT BE GREATER THAN CAPACITY.USING DEFAULT PARAMS:bullet amout=0");
-            }
-            if(time<=0)
-            {
-                time = 10;
-                Console.WriteLine("WARNING:TIME CANT BE 0 OR NEGATIVE.USING DEFAULT PARAMS:time=10sec");
-            }
-
-        }
+        
 
     }
 }
