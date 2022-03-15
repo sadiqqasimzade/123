@@ -77,7 +77,7 @@ Choise:");
             while (time <= 0)
             {
                 Console.Write("time:");
-                time = Convert.ToInt16(Console.ReadLine());
+                time = Convert.ToDouble(Console.ReadLine());
                 if (time <= 0) Console.WriteLine("WRONG INPUT TIME CANT BE NEGATIVE OR 0");
             }
             while (true)
@@ -94,7 +94,7 @@ Choise:");
                     auto = false;
                     break;
                 }
-                else Console.WriteLine("WRONG INPUT");
+                Console.WriteLine("WRONG INPUT");
             }
         }
 
