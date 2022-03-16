@@ -38,7 +38,7 @@ namespace example
                 {
                     Console.Write("bulletcount:");
                     value = Convert.ToInt16(Console.ReadLine());
-                    if (value < 0 || value > _bulletCap ) Console.WriteLine("WRONG INPUT BULLETCOUNT CANT BE <0  OR  >BULLETCAP OR >3000");
+                    if (value < 0 || value > _bulletCap ) Console.WriteLine("WRONG INPUT BULLETCOUNT CANT BE <0  OR  >BULLETCAP ");
                 }
                 _bulletCount = value;
             }
