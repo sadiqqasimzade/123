@@ -34,11 +34,11 @@ namespace example
             }
             set
             {
-                while (value < 0 || value > _bulletCap || value > 3000)
+                while (value < 0 || value > _bulletCap)
                 {
                     Console.Write("bulletcount:");
                     value = Convert.ToInt16(Console.ReadLine());
-                    if (value < 0 || value > _bulletCap || value > 3000) Console.WriteLine("WRONG INPUT BULLETCOUNT CANT BE <0  OR  >BULLETCAP OR >3000");
+                    if (value < 0 || value > _bulletCap ) Console.WriteLine("WRONG INPUT BULLETCOUNT CANT BE <0  OR  >BULLETCAP OR >3000");
                 }
                 _bulletCount = value;
             }
